@@ -16,6 +16,9 @@
         <a href="{% url "update_a" ator.id %}">
             <button type="submit">Editar</button>
         </a>
+        <a href="{% url "delete_a" ator.id %}">
+            <button type="submit">Excluir</button>
+        </a>
     {% endfor %}
     <br><br>
     <a href="{% url "create_a" %}">Adicionar Atores</a>

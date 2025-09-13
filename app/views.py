@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView, ListView, UpdateView
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
 from .models import Ator
 from .forms import AtorForm
 
@@ -25,3 +25,8 @@ class UpdateAtores(UpdateView):
     template_name = "createAtores.html"
     success_url = reverse_lazy("list_a")
 
+class DeleteAtores(DeleteView):
+    model = Ator
+    template_name = "deleteAtores.html"
+    context_object_name = "ator"
+    success_url = reverse_lazy("list_a")
