@@ -60,6 +60,12 @@ class ListDetalhes(DetailView):
     template_name = "listDetalhes.html"
     context_object_name = "filme"
 
+class DeleteFilme(DeleteView):
+    model = Filme
+    template_name = "deleteFilmes.html"
+    context_object_name = "filme"
+    success_url = reverse_lazy("list_f")
+
 def UpdateFilmes(request, pk):
     filme = Filme.objects.get(pk=pk)
 
