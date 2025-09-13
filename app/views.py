@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView, DetailView
 from .models import Ator, Filme
@@ -40,3 +40,31 @@ class ListDetalhes(DetailView):
     model = Filme
     template_name = "listDetalhes.html"
     context_object_name = "filme"
+
+def UpdateFilmes(request, pk):
+    filme = Filme.objects.get(pk=pk)
+
+    if request.method == "POST":
+        idAtor = request.POST.get("idAtor")
+        if idAtor:
+            ator = Ator.objects.get(pk=idAtor)
+            filme.atores.add(ator)
+            return redirect("update_f", pk=filme.id)
+
+    atoresFilme = filme.atores.all() 
+    atoresNfilme = Ator.objects.exclude(id__in = atoresFilme.values_list("id", flat=True))
+
+    return render(request, "updateFilmes.html", {"filme": filme, "atoresfilme": atoresFilme, "atoresnfilme": atoresNfilme})
+
+def DeleteAtorFilme(request, pk):
+    filme = Filme.objects.get(pk=pk)
+
+    if request.method == "POST":
+        idAtor = request.POST.get("idAtor")
+        ator = Ator.objects.get(pk=idAtor)
+        filme.atores.remove(ator)
+        return redirect("delete_af", pk=filme.id)
+    
+    return render(request, "listDetalhes.html", {"filme": filme})
+
+

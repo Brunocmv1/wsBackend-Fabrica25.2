@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Movies</title>
+</head>
+<body>
+    <h1>Qual ator você deseja adicionar?</h1>
+
+    <ul>
+        {% for ator in atoresnfilme %}
+        <li>
+            {{ ator.nome }}
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" name="idAtor" value="{{ ator.id }}">Adicionar</button>
+            </form>
+        </li>
+        {% empty %}
+        <li>Todos os atores vinculados</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url "list_d" filme.id %}">voltar</a>
+    <a href="{% url "create_a" %}">Criar atores</a>
+</body>
+</html>

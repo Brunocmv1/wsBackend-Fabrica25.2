@@ -6,19 +6,28 @@
     <title>List actors in movies</title>
 </head>
 <body>
-    <h1>{{ object.titulo }}</h1>
+    <h1>{{ filme.titulo }}</h1>
+
     <h2>Sinopse:</h2>
-    <p>{{object.sinopse}}</p>
+    <p>{{ filme.sinopse }}</p>
 
     <h2>Atores:</h2>
     <ul>
-        {% for ator in object.atores.all %}
+        {% for ator in filme.atores.all %}
+
         <li>{{ ator.nome }}</li>
+        <form method = "post" action="{% url 'delete_af' pk=filme.id %}">
+            {%csrf_token%}
+            <button type="submit" name="idAtor" value="{{ ator.id }}">🗑️</button>
+        </form>
+        
         {% empty %}
         <li>Nenhum ator associado a este filme.</li>
         {% endfor %}
+        
     </ul>
-    
-    <br> <a href="{% url 'list_f' %}">Voltar</a>
+<a href="{% url "update_f" pk=filme.id %}">Editar</a>
+    <br><br><br>
+    <a href="{% url 'list_f' %}">Voltar</a>
 </body>
 </html>
