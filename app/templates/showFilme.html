@@ -6,15 +6,20 @@
     <title>Movie Visualizer</title>
 </head>
 <body>
-
     {% if dados %}
         {% if dados.Response == "True" %}
-
         <h2>{{ dados.Title }} ({{ dados.Year }})</h2>
         <p>Gênero: {{ dados.Genre }}</p>
         <p>Sinopse: {{ dados.Plot }}</p>
-
         <img src="{{ dados.Poster }}" alt="Poster" width="200" />
+
+        <form method="post" action="{% url 'create_f' %}">
+            {% csrf_token %}
+            <input type="hidden" name="titulo" value="{{ dados.Title }}">
+            <input type="hidden" name="ano_lancamento" value="{{ dados.Year }}">
+            <input type="hidden" name="sinopse" value="{{ dados.Plot }}">
+            <button type="submit">Salvar Filme</button>
+        </form>
 
         {% else %}
         <p>Filme não encontrado: {{ dados.Error }}</p>

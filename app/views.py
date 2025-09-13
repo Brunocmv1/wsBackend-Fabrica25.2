@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView, DetailView
 from .omdb_client import buscar_filme_por_titulo
 from .models import Ator, Filme
@@ -15,6 +15,17 @@ def ShowFilme(request):
     if titulo:
         dados = buscar_filme_por_titulo(titulo)
     return render(request, "showFilme.html", {"dados": dados})
+
+def CriarFilme(request):
+    if request.method == "POST":
+        titulo = request.POST.get("titulo")
+        ano_lancamento = request.POST.get("ano_lancamento")
+        sinopse = request.POST.get("sinopse")
+
+        if titulo:
+            Filme.objects.get_or_create(titulo=titulo, defaults={"ano_lancamento": ano_lancamento, "sinopse": sinopse})
+        return redirect(reverse("list_f"))
+    return redirect(reverse("home"))
 
 class CreateAtores(CreateView):
     model = Ator
