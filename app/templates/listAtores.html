@@ -13,7 +13,11 @@
         <li>{{ator.idade}}</li>
         <li>{{ator.nacionalidade}}</li>
     </ul>
+        <a href="{% url "update_a" ator.id %}">
+            <button type="submit">Editar</button>
+        </a>
     {% endfor %}
+    <br><br>
     <a href="{% url "create_a" %}">Adicionar Atores</a>
     <a href="{% url "home" %}">Voltar</a>
 </body>
