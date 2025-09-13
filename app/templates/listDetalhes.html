@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List actors in movies</title>
+</head>
+<body>
+    <h1>{{ object.titulo }}</h1>
+    <h2>Sinopse:</h2>
+    <p>{{object.sinopse}}</p>
+
+    <h2>Atores:</h2>
+    <ul>
+        {% for ator in object.atores.all %}
+        <li>{{ ator.nome }}</li>
+        {% empty %}
+        <li>Nenhum ator associado a este filme.</li>
+        {% endfor %}
+    </ul>
+    
+    <br> <a href="{% url 'list_f' %}">Voltar</a>
+</body>
+</html>

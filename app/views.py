@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView, DetailView
 from .models import Ator, Filme
 from .forms import AtorForm
 
@@ -35,3 +35,8 @@ class ListFilmes(ListView):
     model = Filme
     template_name = "listFilmes.html"
     context_object_name = "filmes"
+
+class ListDetalhes(DetailView):
+    model = Filme
+    template_name = "listDetalhes.html"
+    context_object_name = "filme"

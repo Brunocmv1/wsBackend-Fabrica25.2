@@ -11,8 +11,8 @@
     <ul>
         <li>{{filme.titulo}}</li>
         <li>{{filme.ano_lancamento}}</li>
-        <li>{{filme.sinopse}}</li>
     </ul>
+    <a href="{% url "list_d" filme.id %}">Detalhes</a>
     {% endfor %}
     <br><br>
     <a href="{% url "home" %}">Voltar</a>

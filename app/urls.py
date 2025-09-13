@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Home, CreateAtores, ListAtores, UpdateAtores, DeleteAtores, ListFilmes
+from .views import Home, CreateAtores, ListAtores, UpdateAtores, DeleteAtores, ListFilmes, ListDetalhes
 
 urlpatterns = [
     path('', Home.as_view(), name="home"),
@@ -8,5 +8,5 @@ urlpatterns = [
     path('atualizarAtores/<int:pk>/', UpdateAtores.as_view(), name="update_a"),
     path('deletarAtores/<int:pk>/', DeleteAtores.as_view(), name="delete_a"),
     path('listarFilmes/', ListFilmes.as_view(), name="list_f"),
-
+    path('listarDetalhes/<int:pk>/', ListDetalhes.as_view(), name="list_d"),
 ]
