@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List Actors</title>
+</head>
+<body>
+    <h1>Lista de Atores</h1>
+    {% for ator in atores %}
+    <ul>
+        <li>{{ator.nome}}</li>
+        <li>{{ator.idade}}</li>
+        <li>{{ator.nacionalidade}}</li>
+    </ul>
+    {% endfor %}
+    <a href="{% url "home" %}">Voltar</a>
+</body>
+</html>
