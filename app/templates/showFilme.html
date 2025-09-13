@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Visualizer</title>
+</head>
+<body>
+
+    {% if dados %}
+        {% if dados.Response == "True" %}
+
+        <h2>{{ dados.Title }} ({{ dados.Year }})</h2>
+        <p>Gênero: {{ dados.Genre }}</p>
+        <p>Sinopse: {{ dados.Plot }}</p>
+
+        <img src="{{ dados.Poster }}" alt="Poster" width="200" />
+
+        {% else %}
+        <p>Filme não encontrado: {{ dados.Error }}</p>
+        {% endif %}
+    {% endif %}
+    <br><br>
+    <a href="{% url "home" %}">Voltar</a>
+</body>
+</html>

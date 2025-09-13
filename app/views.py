@@ -1,12 +1,20 @@
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import TemplateView, CreateView, ListView, UpdateView, DeleteView, DetailView
+from .omdb_client import buscar_filme_por_titulo
 from .models import Ator, Filme
-from .forms import AtorForm
+from .forms import AtorForm, FilmeForm
 
 
 class Home(TemplateView):
     template_name = "home.html"
+
+def ShowFilme(request):
+    titulo = request.GET.get("titulo", "").strip()
+    dados = None
+    if titulo:
+        dados = buscar_filme_por_titulo(titulo)
+    return render(request, "showFilme.html", {"dados": dados})
 
 class CreateAtores(CreateView):
     model = Ator

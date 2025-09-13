@@ -7,10 +7,14 @@
 </head>
 <body>
     <h1>Gerenciador de Filmes</h1>
-    <a href="{% url "create_a" %}">Criar Atores</a>
+    
+    <form method="get" action="{% url 'show_f' %}">
+        <p>Procure seu Filme (Em Inglês):</p>
+        <input type="text" name="titulo" placeholder=""/>
+        <button type="submit">Buscar</button>
+    </form>
     <br><br>
-    <a href="{% url "list_f" %}">Listar Filmes</a>
-    <br><br>
-    <a href="{% url "list_a" %}">Listar Atores</a>
+    <a href="{% url "list_f" %}">Filmes</a>
+    <a href="{% url "list_a" %}">Atores</a>
 </body>
 </html>
