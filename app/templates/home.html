@@ -10,11 +10,10 @@
     
     <form method="get" action="{% url 'show_f' %}">
         <p>Procure seu Filme (Em Inglês):</p>
-        <input type="text" name="titulo" placeholder=""/>
+        <input type="text" name="titulo"/>
         <button type="submit">Buscar</button>
     </form>
     <br><br>
-    <a href="{% url "list_f" %}">Filmes</a>
-    <a href="{% url "list_a" %}">Atores</a>
+    <a href="{% url "list_f" %}">Filmes</a> | <a href="{% url "list_a" %}">Atores</a>
 </body>
 </html>

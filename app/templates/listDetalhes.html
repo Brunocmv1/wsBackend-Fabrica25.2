@@ -24,9 +24,9 @@
         {% empty %}
         <li>Nenhum ator associado a este filme.</li>
         {% endfor %}
-        
     </ul>
-<a href="{% url "update_f" pk=filme.id %}">Editar</a>
+    
+    <a href="{% url "update_f" pk=filme.id %}"><button type="submit">✏️</button></a>
     <br><br><br>
     <a href="{% url 'list_f' %}">Voltar</a>
 </body>

@@ -14,14 +14,13 @@
         <li>{{ator.nacionalidade}}</li>
     </ul>
         <a href="{% url "update_a" ator.id %}">
-            <button type="submit">Editar</button>
+            <button type="submit">✏️</button>
         </a>
         <a href="{% url "delete_a" ator.id %}">
-            <button type="submit">Excluir</button>
+            <button type="submit">🗑️</button>
         </a>
     {% endfor %}
     <br><br>
-    <a href="{% url "create_a" %}">Criar Atores</a>
-    <a href="{% url "home" %}">Voltar</a>
+    <a href="{% url "create_a" %}">Criar Atores</a> | <a href="{% url "home" %}">Voltar</a>
 </body>
 </html>

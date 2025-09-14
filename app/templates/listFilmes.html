@@ -13,10 +13,10 @@
         <li>{{filme.ano_lancamento}}</li>
     </ul>
     <a href="{% url "list_d" filme.id %}">
-        <button type="submit">Detalhes</button>
+        <button type="submit">ℹ️</button>
     </a>
     <a href="{% url "delete_f" filme.id %}">
-        <button type="submit">Excluir</button>
+        <button type="submit">🗑️</button>
     </a>
     {% endfor %}
     <br><br>

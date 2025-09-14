@@ -14,7 +14,7 @@
             {{ ator.nome }}
             <form method="post">
                 {% csrf_token %}
-                <button type="submit" name="idAtor" value="{{ ator.id }}">Adicionar</button>
+                <button type="submit" name="idAtor" value="{{ ator.id }}">➕</button>
             </form>
         </li>
         {% empty %}
